@@ -1,9 +1,48 @@
-# Optimizing Large DataFrames with Chunking
+# Python Data Engineering: Memory Optimization & Chunking
 
-In this guided project, we will demonstrate how to chunk DataFrames and optimize memory usage. We are working with financial data from [Lending Club](https://www.lendingclub.com/), a company that manages peer-to-peer connections between borrowers and investors. While the original dataset is no longer hosted on the Lending Club website, it is available [on Kaggle](https://www.kaggle.com/datasets/wordsforthewise/lending-club/data). The Kaggle version covers 2007 to 2018; however, our dataset has been specifically tailored for this project to include data from 2007 to 2011.
+This repository contains two projects focused on processing large datasets within constrained memory environments. Both projects demonstrate the use of **pandas** for data transformation and **chunking** strategies to handle datasets that exceed available RAM.
 
-To simulate a constrained environment, we will operate under the assumption that we only have **10 MB** of available memory. This constraint allows us to establish a clear "benchmark" for chunking our DataFrames effectively.
+---
 
-[![Colab Project](project_in_colab.png)](https://colab.research.google.com/drive/1-LSfnDKGJBBh6mYwEaNPdOfbZk7YorT-?usp=sharing)
+## 1. Data Cleaning & SQLite Integration: Crunchbase Investments
+
+This project focuses on the end-to-end ETL (Extract, Transform, Load) process. We take a messy, inconsistent dataset and transform it into a lean, queryable SQLite database.
+
+**Key Objectives:**
+
+* **Schema Consistency:** Resolved data type fluctuations across chunks by explicitly defining schemas, preventing "mixed-type" errors common in large CSVs.
+* **Numeric Downcasting:** Optimized storage by converting standard 64-bit integers and floats into compact 16-bit and 32-bit formats.
+* **Low-Cardinality Categorization:** Reduced memory footprint by converting repetitive string columns into the `category` datatype.
+* **Database Integration:** Streamlined the data flow from Python "staging" directly into **SQLite** using chunked appending.
+
+**Dataset:** October 2013 snapshot of startup fundraising rounds.
+**Memory Reduction:** Optimized from **50.44 MB** to **34.37 MB**.
+
+View this project live on Google Colab [here](https://colab.research.google.com/drive/1y6Vqb2VxwlEIGY__yEYQVqMTH1ieLRr6?usp=sharing)
+
+---
+
+## 2. Constraints & Benchmarking: Lending Club Financials
+
+In this project, we simulate a highly constrained hardware environment to establish strict benchmarks for memory management. By operating under an artificial limit, we demonstrate how to maintain high-performance processing when system resources are scarce.
+
+**Key Objectives:**
+
+* **Constraint Simulation:** Operated under a strict **10 MB memory limit** to establish a clear "benchmark" for effective chunking.
+* **Footprint Analysis:** Analyzed memory usage per chunk to identify "memory hog" columns and optimize ingestion.
+* **Aggressive Downcasting:** Optimized numeric and string types with intent, demonstrating how to process data that exceeds available system memory.
+* **Robust Frameworks:** Established a workflow for maintaining data integrity while achieving massive reductions in resource overhead.
+
+**Dataset:** Peer-to-peer lending data (2007–2011) tailored from the original Lending Club dataset.
+**Memory Reduction:** Optimized from nearly **60 MB** to **14.91 MB**.
 
 View this project live on Google Colab [here](https://colab.research.google.com/drive/1-LSfnDKGJBBh6mYwEaNPdOfbZk7YorT-?usp=sharing)
+
+---
+
+## Technical Skills Demonstrated
+
+* **Python Libraries:** Pandas, NumPy, SQLite3
+* **Data Engineering:** ETL Pipelines, Chunking, Data Cleaning, Schema Enforcement
+* **Optimization:** Memory Management, Numeric Downcasting, Category Mapping
+* **Storage:** Database Schema Design and SQLite Integration
