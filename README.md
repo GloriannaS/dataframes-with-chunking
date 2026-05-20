@@ -6,7 +6,7 @@ This repository contains two projects focused on processing large datasets withi
 
 ## 1. Data Cleaning & SQLite Integration: Crunchbase Investments
 
-This project focuses on the end-to-end ETL (Extract, Transform, Load) process. We take a messy, inconsistent dataset and transform it into a lean, queryable SQLite database.
+This project focuses on the end-to-end ETL (Extract, Transform, Load) process. We take a messy, inconsistent dataset and transform it into a lean, queryable SQLite database to uncover trends in the venture capital landscape.
 
 **Key Objectives:**
 
@@ -14,6 +14,12 @@ This project focuses on the end-to-end ETL (Extract, Transform, Load) process. W
 * **Numeric Downcasting:** Optimized storage by converting standard 64-bit integers and floats into compact 16-bit and 32-bit formats.
 * **Low-Cardinality Categorization:** Reduced memory footprint by converting repetitive string columns into the `category` datatype.
 * **Database Integration:** Streamlined the data flow from Python "staging" directly into **SQLite** using chunked appending.
+
+**Key Analysis Results:**
+
+* **Wealth Concentration:** Discovered a classic "Power Law" distribution where the **top 1% of startups raised nearly 20%** of total funds, while the bottom 10% accounted for less than 0.3%.
+* **Sector Trends:** Identified **Software** as the most dominant category, with **Series-A** being the most frequent funding stage.
+* **Investor Insights:** Identified top-tier firms like **Kleiner Perkins Caufield & Byers** (Total Capital) and **Marlin Equity Partners** (Average Investment) as the dataset's primary movers.
 
 **Dataset:** October 2013 snapshot of startup fundraising rounds.
 **Memory Reduction:** Optimized from **50.44 MB** to **34.37 MB**.
@@ -44,5 +50,6 @@ View this project live on Google Colab [here](https://colab.research.google.com/
 
 * **Python Libraries:** Pandas, NumPy, SQLite3
 * **Data Engineering:** ETL Pipelines, Chunking, Data Cleaning, Schema Enforcement
-* **Optimization:** Memory Management, Numeric Downcasting, Category Mapping
+* **Optimization:** Memory Management, Numeric Downcasting, Category Mapping, Resource Constraint Simulation
 * **Storage:** Database Schema Design and SQLite Integration
+* **Data Analysis:** Exploratory Data Analysis (EDA), Statistical Distributions (Power Law), Percentile-based Wealth Concentration Analysis
